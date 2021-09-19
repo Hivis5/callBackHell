@@ -1,50 +1,22 @@
-let $Counter = document.querySelector(".count");
+const msg = (count) => {
+  return new Promise((resolve, reject) => {
+    if (count >0) {
+      setTimeout(() => {
+        const heading = document.querySelector("h1");
+        heading.innerText = count;
+        resolve(count);
+      }, 1000);
+    } else {
+       const heading = document.querySelector("h1");       
+       heading.innerText = "Happy Independence Day";
 
-$Counter.addEventListener("click", function (event) {
-	event.preventDefault();
-	$Counter.innerText = 10;
+    }
+  });
+};
 
-	setTimeout(function () {
-		$Counter.innerText = 9;
-
-		setTimeout(function () {
-			$Counter.innerText = 8;
-
-			setTimeout(function () {
-				$Counter.innerText = 7;
-
-				setTimeout(function () {
-					$Counter.innerText = 6;
-
-					setTimeout(function () {
-						$Counter.innerText = 5;
-
-						setTimeout(function () {
-							$Counter.innerText = 4;
-
-							setTimeout(function () {
-								$Counter.innerText = 3;
-
-								setTimeout(function () {
-									$Counter.innerText = 2;
-
-									setTimeout(function () {
-										$Counter.innerText = 1;
-
-										setTimeout(function () {
-											$Counter.classList.add("colorChange");
-
-											$Counter.innerText =
-												"Happy Independence Day";
-										}, 2000);
-									}, 2000);
-								}, 2000);
-							}, 2000);
-						}, 2000);
-					}, 2000);
-				}, 2000);
-			}, 2000);
-		}, 2000);
-	}, 2000);
-});
-//Adding call back hell event- by hitesh vishal
+msg(5)
+.then((n) => msg(--n))
+.then((n) => msg(--n))
+.then((n) => msg(--n))
+.then((n) => msg(--n))
+.then((n) => msg(--n))
